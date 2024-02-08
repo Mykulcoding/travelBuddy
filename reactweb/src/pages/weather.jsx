@@ -9,7 +9,7 @@ const Weather = () => {
   const handleSearch = async () => {
     try {
       // Add OpenWeatherMap API key
-      const apiKey = '';
+      const apiKey = 'eafdda80329f2e71b6ade7fada05e2fc';
       const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${apiKey}&units=metric`;
 
       // Make the API call
