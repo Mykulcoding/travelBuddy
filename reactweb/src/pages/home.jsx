@@ -2,13 +2,14 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const Home = () => {
+    const imagePath = '../components/style/homeImage_1.PNG';
   return (
     <Container>
       <Row>
         {/* Images on the left */}
         <Col xs={12} md={6}>
           <img
-            src="" // add image URL
+            src={imagePath} // Use the image path directly
             alt="Left Image"
             className="img-fluid"
           />
