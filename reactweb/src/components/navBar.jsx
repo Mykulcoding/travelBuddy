@@ -1,28 +1,26 @@
-import React, { useState, useEffect } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { FaHome, FaMapMarkedAlt, FaLandmark, FaCloudSun, FaStar, FaClock } from 'react-icons/fa';
+import { FaClock, FaHome, FaMapMarkedAlt, FaLandmark, FaCloudSun, FaStar } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
+import React, { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
+import './style/components.css'
 
-const NavBar = () => {
+const Header = () => {
   const [expanded, setExpanded] = useState(false);
-  const [currentTime, setCurrentTime] = useState(dayjs().format('HH:mm'));
-  const [currentDate, setCurrentDate] = useState(dayjs().format('MMMM DD, YYYY'));
+  const handleToggle = () => setExpanded(!expanded);
+  const [currentTime, setCurrentTime] = useState('');
+  const [currentDate, setCurrentDate] = useState('');
 
   useEffect(() => {
-    const updateTime = () => {
+    // Update time and date every second
+    const interval = setInterval(() => {
       setCurrentTime(dayjs().format('HH:mm'));
       setCurrentDate(dayjs().format('MMMM DD, YYYY'));
-    };
+    }, 1000);
 
-    const interval = setInterval(updateTime, 1000);
-
+    // Clear interval on component unmount
     return () => clearInterval(interval);
-  }, []);
-
-  const handleToggle = () => {
-    setExpanded(!expanded);
-  };
+  }, []); // Empty dependency array means it runs once on mount
 
   return (
     <Navbar bg="light" expand="lg">
@@ -71,6 +69,5 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
-
+export default Header;
     
