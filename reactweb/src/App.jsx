@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes} from 'react-router-dom';
 import NavBar from './components/navBar';
 import Home from './pages/home'; // Import Home component
 import Map from './pages/map'; // Import Map component
@@ -20,12 +20,12 @@ function App() {
         </div>
 
         {/* routes */}
-        <Switch>
+        <Routes>
           <Route path="/home" component={Home} />
           <Route path="/map" component={Map} />
           <Route path="/tourism" component={Tourism} />
           <Route path="/weather" component={Weather} />
-        </Switch>
+        </Routes>
       </div>
     </Router>
   );
