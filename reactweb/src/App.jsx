@@ -21,10 +21,10 @@ function App() {
 
         {/* routes */}
         <Routes>
-          <Route path="/home" component={Home} />
-          <Route path="/map" component={Map} />
-          <Route path="/tourism" component={Tourism} />
-          <Route path="/weather" component={Weather} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="/tourism" element={<Tourism />} />
+          <Route path="/weather" element={<Weather />} />
         </Routes>
       </div>
     </Router>
