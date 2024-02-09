@@ -1,71 +1,157 @@
 import React, { useState } from 'react';
-import { GoogleMap, LoadScript, Marker, Autocomplete } from '@react-google-maps/api';
-import { Container, Row, Col } from 'react-bootstrap';
+import {
+  GoogleMap,
+  LoadScript,
+  DirectionsService,
+  DirectionsRenderer,
+  Autocomplete,
+} from '@react-google-maps/api';
+
+// Component to display directions list
+const DirectionsList = ({ directions }) => {
+  return (
+    <div style={{ position: 'absolute', left: 10, top: 170, width: '250px' }}>
+      <div>
+        <h2>Directions</h2>
+        <ol>
+          {directions &&
+            directions.routes[0].legs[0].steps.map((step, index) => (
+              <li key={index} dangerouslySetInnerHTML={{ __html: step.instructions }} />
+            ))}
+        </ol>
+      </div>
+    </div>
+  );
+};
 
 const Map = () => {
   const mapContainerStyle = {
-    width: '100%',
+    width: '70%',
     height: '500px',
+    float: 'right',
   };
 
-  const [center, setCenter] = useState(null);
+  const autocompleteStyle = {
+    position: 'absolute',
+    left: 10,
+    top: 80,
+    zIndex: 1,
+  };
 
-  const handlePlaceSelect = (place) => {
+  const buttonStyle = {
+    position: 'absolute',
+    left: 10,
+    top: 130,
+    zIndex: 1,
+  };
+
+  const [origin, setOrigin] = useState(null);
+  const [destination, setDestination] = useState(null);
+  const [directions, setDirections] = useState(null);
+  const [originAutocomplete, setOriginAutocomplete] = useState(null);
+  const [destinationAutocomplete, setDestinationAutocomplete] = useState(null);
+
+  // Callback when origin location is selected
+  const handleOriginSelect = () => {
+    const place = originAutocomplete.getPlace();
     if (place.geometry) {
       const { lat, lng } = place.geometry.location;
-      setCenter({ lat: lat(), lng: lng() });
+      setOrigin({ lat: lat(), lng: lng() });
+    }
+  };
+
+  // Callback when destination location is selected
+  const handleDestinationSelect = () => {
+    const place = destinationAutocomplete.getPlace();
+    if (place.geometry) {
+      const { lat, lng } = place.geometry.location;
+      setDestination({ lat: lat(), lng: lng() });
+    }
+  };
+
+  // Autocomplete load callback for origin
+  const onLoadOriginAutocomplete = (autocomplete) => {
+    setOriginAutocomplete(autocomplete);
+  };
+
+  // Autocomplete load callback for destination
+  const onLoadDestinationAutocomplete = (autocomplete) => {
+    setDestinationAutocomplete(autocomplete);
+  };
+
+  // Callback for Directions Service result
+  const directionsCallback = (result, status) => {
+    if (status === 'OK') {
+      setDirections(result);
+    } else {
+      console.error(`Directions request failed due to ${status}`);
+    }
+  };
+
+  // Function to request directions
+  const requestDirections = () => {
+    if (origin && destination) {
+      const directionsService = new window.google.maps.DirectionsService();
+      const directionsOptions = {
+        origin,
+        destination,
+        travelMode: 'DRIVING',
+      };
+      directionsService.route(directionsOptions, directionsCallback);
     }
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <LoadScript
-            googleMapsApiKey="" //add Google-maps API
-            libraries={['places']}
-          >
-            <Autocomplete
-              onLoad={(autocomplete) => {
-                // Set the bounds to restrict the search
-                autocomplete.setBounds({ east: -122.375, west: -123.375, north: 37.875, south: 37.375 });
-              }}
-              onPlaceChanged={() => handlePlaceSelect(autocomplete.getPlace())}
-            >
-              <input
-                type="text"
-                placeholder="Search for a location..."
-                style={{
-                  boxSizing: 'border-box',
-                  border: '1px solid transparent',
-                  width: '240px',
-                  height: '32px',
-                  padding: '0 12px',
-                  borderRadius: '3px',
-                  boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
-                  fontSize: '14px',
-                  outline: 'none',
-                  textOverflow: 'ellipses',
-                  position: 'absolute',
-                  left: '50%',
-                  marginLeft: '-120px',
-                }}
-              />
-            </Autocomplete>
-            {center && (
-              <GoogleMap
-                mapContainerStyle={mapContainerStyle}
-                center={center}
-                zoom={12}
-              >
-                {/* Marker for the selected location */}
-                <Marker position={center} />
-              </GoogleMap>
-            )}
-          </LoadScript>
-        </Col>
-      </Row>
-    </Container>
+    <LoadScript
+      googleMapsApiKey="AIzaSyAf7DnPpFx3bngUYJa427O5MqVsmWQonmY"
+      libraries={['places']}
+    >
+      {/* Autocomplete for Origin */}
+      <div style={{ ...autocompleteStyle, top: 50 }}>
+        <Autocomplete
+          onLoad={onLoadOriginAutocomplete}
+          onPlaceChanged={handleOriginSelect}
+        >
+          <input
+            type="text"
+            placeholder="Enter your current location..."
+            style={{ width: '240px', padding: '8px' }}
+          />
+        </Autocomplete>
+      </div>
+
+      {/* Autocomplete for Destination */}
+      <div style={{ ...autocompleteStyle, top: 100 }}>
+        <Autocomplete
+          onLoad={onLoadDestinationAutocomplete}
+          onPlaceChanged={handleDestinationSelect}
+        >
+          <input
+            type="text"
+            placeholder="Enter your destination..."
+            style={{ width: '240px', padding: '8px' }}
+          />
+        </Autocomplete>
+      </div>
+
+      {/* Button to Request Directions */}
+      <div style={buttonStyle}>
+        <button onClick={requestDirections}>Get Directions</button>
+      </div>
+
+      {/* Google Map */}
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        center={{ lat: 37.7749, lng: -122.4194 }}
+        zoom={7}
+      >
+        {/* Directions Renderer */}
+        {directions && <DirectionsRenderer directions={directions} />}
+      </GoogleMap>
+
+      {/* Directions List */}
+      <DirectionsList directions={directions} />
+    </LoadScript>
   );
 };
 
