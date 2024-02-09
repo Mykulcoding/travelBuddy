@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
+
 const Home = () => {
     
   return (
@@ -9,7 +10,7 @@ const Home = () => {
         {/* Images on the left */}
         <Col xs={12} md={6}>
           <img
-            src='../components/style/homeImage_1.PNG' // imported image will be used
+            src='../assets/homeImage_1.PNG' // imported image will be used
             alt="Display Image"
             className="img-fluid"
           />

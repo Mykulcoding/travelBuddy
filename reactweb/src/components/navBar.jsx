@@ -3,7 +3,7 @@ import { FaClock, FaHome, FaMapMarkedAlt, FaLandmark, FaCloudSun, FaStar } from 
 import { LinkContainer } from 'react-router-bootstrap';
 import React, { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
-import './style/components.css'
+import '../assets/components.css'
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
