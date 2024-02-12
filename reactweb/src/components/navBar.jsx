@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import React, { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
 import '../assets/components.css'
+import '../assets/Navbar.css';
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);

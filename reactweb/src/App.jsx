@@ -5,7 +5,7 @@ import Home from "./pages/home"; // Import Home component
 import Map from "./pages/map"; // Import Map component
 import Tourism from "./pages/tourism"; // Import Tourism component
 import Weather from "./pages/weather"; // Import Weather component
-// import Footer from "./components/footer";
+import Footer from "./components/footer";
 import "./App.css";
 
 function App() {
@@ -25,8 +25,7 @@ function App() {
           </Routes>
         </div>
 
-        {/* Footer */}
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </Router>
   );
