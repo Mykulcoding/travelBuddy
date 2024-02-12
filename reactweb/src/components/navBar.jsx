@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
 import '../assets/components.css'
 import '../assets/Navbar.css';
+import '../assets/logo.png';
 
 const Header = () => {
   const [expanded, setExpanded] = useState(false);
@@ -25,6 +26,12 @@ const Header = () => {
 
   return (
     <Navbar bg="light" expand="lg">
+      <Navbar.Brand href="/">
+        <img
+          src="assets/logo.png" className="d-inline-block align-top" alt="Logo"
+        />
+      </Navbar.Brand>
+
       <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={handleToggle} />
       <Navbar.Collapse id="basic-navbar-nav" className={`justify-content-between ${expanded ? 'show' : ''}`}>
         {/* Time and Date on the left */}
