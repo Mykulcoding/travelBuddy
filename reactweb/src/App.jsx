@@ -1,6 +1,7 @@
 import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.css';
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
-import NavBar from "./components/navBar";
+import Header from "./components/Header/Header";
 import Home from "./pages/home"; // Import Home component
 import Map from "./pages/map"; // Import Map component
 import Tourism from "./pages/tourism"; // Import Tourism component
@@ -12,10 +13,10 @@ function App() {
   return (
     <Router>
       <div>
-        <NavBar />
+        <Header />
 
-{/* Your existing content */}
-<div>
+    {/* Your existing content */}
+        <div>
           {/* routes */}
           <Routes>
             <Route path="/home" element={<Home />} />

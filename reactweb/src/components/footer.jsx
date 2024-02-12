@@ -8,7 +8,7 @@ function Footer() {
   return (
     <div className="my-5">
       {/* Footer section */}
-      <footer>
+      <div className="footer">
         <div className="text-center">
           {/* Email icon with mailto link */}
           <a href='mailto:mom_adjei@yahoo.com' target="_blank" className='p-2'>
@@ -38,8 +38,9 @@ function Footer() {
 
         {/* Copyright text */}
         <div className="footer-copyright text-center py-3">Digital Mirage / All rights reserved</div>
-      </footer>
+      </div>
     </div>
+    
   );
 }
 
