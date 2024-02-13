@@ -1,13 +1,15 @@
 import React from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
+import '../assets/Footer.css';
+
 
 function Footer() {
   return (
     <div className="my-5">
       {/* Footer section */}
-      <footer>
-        <div className="text-center">
+      <div className="footer">
+        <div className="text-center d-flex align-items-end justify-content-center">
           {/* Email icon with mailto link */}
           <a href='mailto:mom_adjei@yahoo.com' target="_blank" className='p-2'>
             <AiOutlineMail size="2em" />
@@ -36,8 +38,9 @@ function Footer() {
 
         {/* Copyright text */}
         <div className="footer-copyright text-center py-3">Digital Mirage / All rights reserved</div>
-      </footer>
+      </div>
     </div>
+    
   );
 }
 

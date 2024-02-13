@@ -1,0 +1,26 @@
+.hero-container {
+    background-image: url('../../assets/lake.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-color: rgb(127, 187, 192);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-container h1 {
+    color: #fff;
+    font-size: 80px;
+    margin-top: -100px;
+}
+
+.hero-container p {
+    margin-top: 8px;
+    color: #fff;
+    font-size: 32px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

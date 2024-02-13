@@ -1,0 +1,31 @@
+/* Header.css */
+
+header {
+  background-color: white; 
+}
+
+.NavbarBrand img {
+  margin-left: 20px; 
+  filter: invert(100%);
+ 
+}
+
+
+
+.NavbarText {
+  margin-right: auto; 
+  
+
+}
+
+.Navbar .nav-link {
+  font-size: 500px; 
+}
+
+@media (max-width: 768px) {
+  .NavbarBrand img {
+    margin-left: 0; 
+    margin-right: auto; /
+  }
+}
+
