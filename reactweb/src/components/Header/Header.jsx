@@ -43,7 +43,7 @@ const Header = () => {
       <Navbar.Collapse id="basic-navbar-nav" className={`justify-content-between ${expanded ? 'show' : ''}`}>
         {/* Time and Date on the left */}
         <Navbar.Text className="mr-auto">
-          <FaClock className="mr-1" />
+          <FaClock className="mr-1"/>
           {`Current Time: ${currentTime} | Current Date: ${currentDate}`}
         </Navbar.Text>
 
