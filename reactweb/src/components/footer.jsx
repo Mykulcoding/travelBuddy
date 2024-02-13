@@ -2,7 +2,7 @@ import React from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
 import '../assets/Footer.css';
-import '../assets/components.css'
+
 
 function Footer() {
   return (

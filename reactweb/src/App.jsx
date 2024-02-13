@@ -8,6 +8,7 @@ import Tourism from "./pages/tourism"; // Import Tourism component
 import Weather from "./pages/weather"; // Import Weather component
 import Footer from "./components/footer";
 import "./App.css";
+import HeroSection from './components/HeroSection/HeroSection';
 
 function App() {
   return (
