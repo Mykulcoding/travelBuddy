@@ -9,7 +9,7 @@ function Footer() {
     <div className="my-5">
       {/* Footer section */}
       <div className="footer">
-        <div className="text-center">
+        <div className="text-center d-flex align-items-end justify-content-center">
           {/* Email icon with mailto link */}
           <a href='mailto:mom_adjei@yahoo.com' target="_blank" className='p-2'>
             <AiOutlineMail size="2em" />
