@@ -9,6 +9,7 @@ const Home = () => {
   return (
     <div>
       <HeroSection />
+     
     </div>
     // <Container>
     //   <Row>
