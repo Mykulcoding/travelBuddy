@@ -5,35 +5,50 @@ import { FaSearch } from 'react-icons/fa';
 const Weather = () => {
   const [searchInput, setSearchInput] = useState('');
   const [weatherData, setWeatherData] = useState(null);
+  const [forecastData, setForecastData] = useState(null); // DDM: Added state for forecast data
 
   const handleSearch = async () => {
     try {
-      // Add OpenWeatherMap API key
-      const apiKey = 'eafdda80329f2e71b6ade7fada05e2fc';
-      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${apiKey}&units=metric`;
+      // Add AccuWeather API key
+      const apiKey = 'jupzrltU6u2x4erPATbWLgnXj8eKDe6T'; // DDM: Changed to AccuWeather API key
+      const apiUrl = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${searchInput}`;
 
-      // Make the API call
+      // Make the API call to get location key
       const response = await fetch(apiUrl);
+      const locationData = await response.json();
+      const locationKey = locationData[0].Key;
 
-      // Check if the response is successful
-      if (!response.ok) {
-        throw new Error(`Weather API request failed: ${response.statusText}`);
-      }
+      // Make the API call for current weather
+      const weatherUrl = `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${apiKey}&details=true`;
+      const weatherResponse = await fetch(weatherUrl);
+      const currentWeatherData = await weatherResponse.json();
 
-      // Parse the JSON response
-      const data = await response.json();
+      // Make the API call for 5-day forecast
+      const forecastUrl = `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${apiKey}&metric=true`;
+      const forecastResponse = await fetch(forecastUrl);
+      const forecastData = await forecastResponse.json();
 
       // Extract relevant weather information from the response
       const currentWeather = {
-        city: data.name,
+        city: locationData[0].LocalizedName,
         time: new Date().toLocaleTimeString(),
-        temperature: Math.round(data.main.temp),
-        weatherText: data.weather[0].description,
-        wind: `${data.wind.speed} m/s`,
-        humidity: `${data.main.humidity}%`,
+        temperature: Math.round(currentWeatherData[0].Temperature.Metric.Value),
+        weatherText: currentWeatherData[0].WeatherText,
+        wind: `${currentWeatherData[0].Wind.Speed.Metric.Value} m/s`,
+        humidity: `${currentWeatherData[0].RelativeHumidity}%`,
       };
 
+      // Extract relevant forecast information from the response
+      const dailyForecasts = forecastData.DailyForecasts.map(day => ({
+        date: new Date(day.Date).toLocaleDateString(),
+        minTemperature: day.Temperature.Minimum.Value,
+        maxTemperature: day.Temperature.Maximum.Value,
+        dayWeatherText: day.Day.IconPhrase,
+        nightWeatherText: day.Night.IconPhrase,
+      }));
+
       setWeatherData(currentWeather);
+      setForecastData(dailyForecasts);
     } catch (error) {
       console.error('Error during Weather API call:', error);
     }
@@ -73,7 +88,23 @@ const Weather = () => {
         </Row>
       )}
 
-      {/* Add section for 5-day forecast here */}
+      {/* Display 5-day forecast */}
+      {forecastData && (
+        <Row>
+          <Col>
+            <h2>5-Day Forecast:</h2>
+            {forecastData.map(day => (
+              <div key={day.date}>
+                <h3>{day.date}</h3>
+                <p>Min Temperature: {day.minTemperature}°C</p>
+                <p>Max Temperature: {day.maxTemperature}°C</p>
+                <p>Day Weather: {day.dayWeatherText}</p>
+                <p>Night Weather: {day.nightWeatherText}</p>
+              </div>
+            ))}
+          </Col>
+        </Row>
+      )}
     </Container>
   );
 };
