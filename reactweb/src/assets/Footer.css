@@ -1,38 +1,34 @@
 /* Footer.css */
 
 .footer {
+
+  
     background-color: #fff;
     padding: 10px; 
     width: 100%; 
-    position: fixed; 
+    position: sticky; 
     bottom: 0; 
     left: 0;
-    height: auto;
+    height:120px;
+}
 
-   
-  }
-  
-  .footer a {
-    margin: 0 10px; 
-  }
-  
-  .footer a svg {
-    font-size: 2.5em; 
-    color: rgb(161, 216, 227);
+.footer a {
+  margin: 0 10px;
+}
 
-  }
+.footer a svg {
+  font-size: 2.5em;
+  color: rgb(161, 216, 227);
+}
 
-  .footer a svg:hover {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    transform: scale(1.2);
-    transition: transform 0.3s ease;
-  }
-  
-  .footer-copyright {
-    color: #495057; 
-    font-weight: 500;
-    font-size: 18px; 
-  }
+.footer a svg:hover {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
 
- 
-  
+.footer-copyright {
+  color: #495057;
+  font-weight: 500;
+  font-size: 18px;
+}
