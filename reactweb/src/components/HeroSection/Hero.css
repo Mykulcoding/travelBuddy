@@ -12,6 +12,12 @@
     align-items: center;
 }
 
+.home {
+    height: calc(100vh - 120px);
+}
+
+
+
 .hero-container h1 {
     color: #fff;
     font-size: 80px;
