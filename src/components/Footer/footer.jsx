@@ -1,11 +1,12 @@
 import React from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
-import '../assets/Footer.css';
+import './Footer.css';
 
 
 function Footer() {
   return (
+    <div className='container'>
     <div className="my-5">
       {/* Footer section */}
       <div className="footer">
@@ -39,6 +40,7 @@ function Footer() {
         {/* Copyright text */}
         <div className="footer-copyright text-center py-3">Digital Mirage / All rights reserved</div>
       </div>
+    </div>
     </div>
     
   );
