@@ -1,5 +1,5 @@
 import { Navbar, Nav } from 'react-bootstrap';
-import { FaClock, FaHome, FaMapMarkedAlt, FaLandmark, FaCloudSun, FaStar } from 'react-icons/fa';
+import { FaClock, FaHome, FaMapMarkedAlt, FaLandmark, FaCloudSun, FaLanguage, FaStar } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
 import React, { useState, useEffect } from 'react';
 import logo from "../../assets/logo.png";
@@ -78,7 +78,13 @@ const Header = () => {
               </Nav.Link>
             </LinkContainer>
 
-            <LinkContainer to="/review">
+            <LinkContainer to="/translate">
+              <Nav.Link>
+                <FaLanguage className="nav-icon" />
+              </Nav.Link>
+            </LinkContainer>
+
+            <LinkContainer to="/quiz">
               <Nav.Link>
                 <FaStar className="nav-icon" />
               </Nav.Link>
