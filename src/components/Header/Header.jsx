@@ -84,7 +84,7 @@ const Header = () => {
               </Nav.Link>
             </LinkContainer>
 
-            <LinkContainer to="/review">
+            <LinkContainer to="/quiz">
               <Nav.Link>
                 <FaStar className="nav-icon" />
               </Nav.Link>
