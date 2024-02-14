@@ -1,6 +1,6 @@
 import React from "react";
-import Map from '../components/Maps/map';
-import '../components/Maps/Map.css'
+import Map from './Maps/map';
+import './Maps/map.css'
 
 const Direction = () => {
     return (
