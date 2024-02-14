@@ -1,0 +1,38 @@
+.card-border{
+    border: 3px solid black;
+    
+    height: 260px;
+}
+.searchbox{
+    height: 35px;
+    border:3px solid black;
+    margin-top: 50px;
+}
+
+.searchbtn{
+    background-color: black;
+    
+}
+
+.searchbtn:hover{
+    background-color: rgb(161, 216, 227);
+    border:none;
+}
+
+.city{
+    font-size: 40px;
+}
+
+.main-card-border{
+    height: 160px;
+    border: 3px solid black;
+}
+
+.main-card-content{
+    font-size: 25px;
+}
+
+.bold-text{
+    font-weight: bold;
+}
+

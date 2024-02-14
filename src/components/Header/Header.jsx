@@ -29,55 +29,45 @@ const Header = () => {
   return (
     <header>
       <Navbar expand="lg">
-        <div className="NavbarBrand" href="/">
-          <img
-            src={logo}
-            width="250"
-            height="83"
-            className="d-inline-block align-top"
-            alt="Logo"
-          />
-        </div>
-
-        <Navbar.Toggle
-          aria-controls="basic-navbar-nav"
-          onClick={handleToggle}
+      <div className = "NavbarBrand" href="/">
+        <img
+          src={logo} 
+          width="250"
+          height="83"
+          className="d-inline-block align-top"
+           alt="Logo"
         />
-        <Navbar.Collapse
-          id="basic-navbar-nav"
-          className={`justify-content-between ${expanded ? "show" : ""}`}
-        >
-          {/* Time and Date on the left */}
-          <Navbar.Text className="mr-auto ">
-            {`Current Time: ${currentTime} \u00A0 | \u00A0 Current Date: ${currentDate}`}
-          </Navbar.Text>
+      </div>
 
-          {/* Icons on the right */}
-          <Nav>
-            <LinkContainer to="/home">
-              <Nav.Link>
-                <FaHome className="nav-icon" />
-              </Nav.Link>
-            </LinkContainer>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={handleToggle} />
+      <Navbar.Collapse id="basic-navbar-nav" className={`justify-content-between ${expanded ? 'show' : ''}`}>
+        {/* Time and Date on the left */}
+        <Navbar.Text className="mr-auto">
+          <FaClock className="mr-1"/>
+          {`Current Time: ${currentTime} | Current Date: ${currentDate}`}
+        </Navbar.Text>
 
-            <LinkContainer to="/map">
-              <Nav.Link>
-                <FaMapMarkedAlt className="nav-icon" />
-              </Nav.Link>
-            </LinkContainer>
+        {/* Icons on the right */}
+        <Nav>
+          <LinkContainer to="/home">
+            <Nav.Link>
+              <FaHome />
+            </Nav.Link>
+          </LinkContainer>
 
-            <LinkContainer to="/tourism">
-              <Nav.Link>
-                <FaLandmark className="nav-icon" />
-              </Nav.Link>
-            </LinkContainer>
+          <LinkContainer to="/map">
+            <Nav.Link>
+              <FaMapMarkedAlt />
+            </Nav.Link>
+          </LinkContainer>
 
-            <LinkContainer to="/weather">
-              <Nav.Link>
-                <FaCloudSun className="nav-icon" />
-              </Nav.Link>
-            </LinkContainer>
+          <LinkContainer to="/tourism">
+            <Nav.Link>
+              <FaLandmark />
+            </Nav.Link>
+          </LinkContainer>
 
+<<<<<<<< HEAD:src/components/Header/Header.jsx
             <LinkContainer to="/translate">
               <Nav.Link>
                 <FaLanguage className="nav-icon" />
@@ -93,6 +83,29 @@ const Header = () => {
         </Navbar.Collapse>
       </Navbar>
     </header>
+========
+          <LinkContainer to="/weather">
+            <Nav.Link>
+              <FaCloudSun />
+            </Nav.Link>
+          </LinkContainer>
+
+          <LinkContainer to="/translation">
+            <Nav.Link>
+              <FaLanguage />
+            </Nav.Link>
+          </LinkContainer>
+
+          <LinkContainer to="/review">
+            <Nav.Link>
+              <FaStar />
+            </Nav.Link>
+          </LinkContainer>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+    </header> 
+>>>>>>>> fixing/issues:reactweb/src/components/Header/Header.jsx
   );
 };
 
