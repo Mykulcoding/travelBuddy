@@ -6,19 +6,23 @@ import {
   DirectionsRenderer,
   Autocomplete,
 } from '@react-google-maps/api';
+import './Map.css'
+import '../../assets/maps.jpg'
 
 // Component to display directions list
 const DirectionsList = ({ directions }) => {
   return (
-    <div style={{ position: 'absolute', left: 10, top: 170, width: '250px' }}>
+    <div style={{ position: 'absolute', left: 10, top: 180, width: '250px',  color: 'red'}}>
       <div>
         <h2>Directions</h2>
+        <div className=''>
         <ol>
           {directions &&
             directions.routes[0].legs[0].steps.map((step, index) => (
               <li key={index} dangerouslySetInnerHTML={{ __html: step.instructions }} />
             ))}
         </ol>
+        </div>
       </div>
     </div>
   );
@@ -106,6 +110,7 @@ const Map = () => {
       googleMapsApiKey="AIzaSyAf7DnPpFx3bngUYJa427O5MqVsmWQonmY"
       libraries={['places']}
     >
+      
       {/* Autocomplete for Origin */}
       <div style={{ ...autocompleteStyle, top: 50 }}>
         <Autocomplete
