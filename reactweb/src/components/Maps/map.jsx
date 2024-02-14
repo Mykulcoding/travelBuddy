@@ -14,7 +14,7 @@ const DirectionsList = ({ directions }) => {
   return (
     <div className="directions">
         <h2>Directions</h2>
-        <ol>
+        <ol className='list'>
           {directions &&
             directions.routes[0].legs[0].steps.map((step, index) => (
               <li key={index} dangerouslySetInnerHTML={{ __html: step.instructions }} />
