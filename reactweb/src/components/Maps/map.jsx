@@ -15,7 +15,7 @@ const DirectionsList = ({ directions }) => {
     <div style={{ position: 'absolute', left: 10, top: 180, width: '250px',  color: 'red'}}>
       <div>
         <h2>Directions</h2>
-        <div className=''>
+        <div className='container'>
         <ol>
           {directions &&
             directions.routes[0].legs[0].steps.map((step, index) => (
