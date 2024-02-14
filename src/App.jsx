@@ -10,6 +10,7 @@ import Footer from "./components/Footer/footer";
 import "./App";
 import HeroSection from './components/HeroSection/HeroSection';
 import Translator from "./pages/translate/translate";
+import Quiz from "./pages/Quiz/quiz"
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/tourism" element={<Tourism />} />
             <Route path="/translate" element={<Translator />} />
             <Route path="/weather" element={<Weather />} />
+            <Route path="/quiz" element={<Quiz />} />
           </Routes>
         </div>
 
