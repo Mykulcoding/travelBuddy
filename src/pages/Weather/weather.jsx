@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import { FaSearch } from 'react-icons/fa';
+import React, { useState } from "react";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { FaSearch } from "react-icons/fa";
+import "./Weather.css";
+import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
 
 const Weather = () => {
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null); // DDM: Added state for forecast data
 
   const handleSearch = async () => {
     try {
       // Add AccuWeather API key
-      const apiKey = 'jupzrltU6u2x4erPATbWLgnXj8eKDe6T'; // DDM: Changed to AccuWeather API key
+      const apiKey = "jupzrltU6u2x4erPATbWLgnXj8eKDe6T"; // DDM: Changed to AccuWeather API key
       const apiUrl = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${searchInput}`;
 
       // Make the API call to get location key
@@ -39,7 +42,7 @@ const Weather = () => {
       };
 
       // Extract relevant forecast information from the response
-      const dailyForecasts = forecastData.DailyForecasts.map(day => ({
+      const dailyForecasts = forecastData.DailyForecasts.map((day) => ({
         date: new Date(day.Date).toLocaleDateString(),
         minTemperature: day.Temperature.Minimum.Value,
         maxTemperature: day.Temperature.Maximum.Value,
@@ -50,7 +53,7 @@ const Weather = () => {
       setWeatherData(currentWeather);
       setForecastData(dailyForecasts);
     } catch (error) {
-      console.error('Error during Weather API call:', error);
+      console.error("Error during Weather API call:", error);
     }
   };
 
@@ -60,46 +63,66 @@ const Weather = () => {
       <Row>
         <Col xs={6}>
           <input
+            className="searchbox my-5"
             type="text"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             placeholder="Enter city..."
           />
-        </Col>
-        <Col xs={2}>
-          <Button variant="primary" onClick={handleSearch}>
+          <Button className="mx-1 searchbtn" onClick={handleSearch}>
             <FaSearch />
           </Button>
         </Col>
+        <Col xs={2}></Col>
       </Row>
 
       {/* Display current weather */}
       {weatherData && (
-        <Row>
-          <Col>
-            <h2>Current Weather in {weatherData.city}:</h2>
-            <p>City: {weatherData.city}</p>
-            <p>Time: {weatherData.time}</p>
-            <p>Temperature: {weatherData.temperature}°C</p>
-            <p>Weather: {weatherData.weatherText}</p>
-            <p>Wind: {weatherData.wind}</p>
-            <p>Humidity: {weatherData.humidity}</p>
+        <Row className="">
+          <h2 className="d-flex align-items-end justify-content-center mx-3 ">
+            Current Weather in {weatherData.city}:
+          </h2>
+          <Col className="d-flex justify-content-center my-4 main-card-border align-items-center">
+            <p className=" mx-auto main-card-content">City: <span className="bold-text">{weatherData.city}</span></p>
+            <p className=" mx-auto main-card-content">Time: <span className="bold-text">{weatherData.time}</span></p>
+            <p className=" mx-auto main-card-content">Temperature: <span className="bold-text">{weatherData.temperature}°C</span></p>
+            <p className=" mx-auto main-card-content">Weather: <span className="bold-text">{weatherData.weatherText}</span></p>
+            <p className=" mx-auto main-card-content">Wind: <span className="bold-text">{weatherData.wind}</span></p>
+            <p className=" mx-auto main-card-content">Humidity: <span className="bold-text">{weatherData.humidity}</span></p>
           </Col>
         </Row>
       )}
 
       {/* Display 5-day forecast */}
       {forecastData && (
-        <Row>
-          <Col>
-            <h2>5-Day Forecast:</h2>
-            {forecastData.map(day => (
+        <Row className="my-5">
+          <h2 className="d-flex justify-content-center  my-5">
+            5-Day Forecast:
+          </h2>
+          <Col className="d-flex align-items-end justify-content-center mx-3">
+            {forecastData.map((day) => (
               <div key={day.date}>
-                <h3>{day.date}</h3>
-                <p>Min Temperature: {day.minTemperature}°C</p>
-                <p>Max Temperature: {day.maxTemperature}°C</p>
-                <p>Day Weather: {day.dayWeatherText}</p>
-                <p>Night Weather: {day.nightWeatherText}</p>
+                <Card className="mx-1 " style={{ width: "20rem" }}>
+                  <Card.Body className="card-border">
+                    <Card.Title className=" d-flex justify-content-center 5-day-date">
+                      <h3>{day.date}</h3>
+                    </Card.Title>
+                    <Card.Text>
+                      <p className=" d-flex justify-content-center">
+                        Min Temperature: {day.minTemperature}°C
+                      </p>
+                      <p className=" d-flex justify-content-center">
+                        Max Temperature: {day.maxTemperature}°C
+                      </p>
+                      <p className=" d-flex justify-content-center">
+                        Day Weather: {day.dayWeatherText}
+                      </p>
+                      <p className=" d-flex justify-content-center">
+                        Night Weather: {day.nightWeatherText}
+                      </p>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
               </div>
             ))}
           </Col>

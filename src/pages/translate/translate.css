@@ -1,0 +1,13 @@
+.btn{
+    background-color: black;
+    border:1px solid black;
+}
+
+.btn:hover{
+    background-color: rgb(161, 216, 227);
+    border:none;
+}
+
+textarea{
+    height: 300px;
+}
