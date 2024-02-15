@@ -37,7 +37,8 @@ const Translator = () => {
 
   return (
     <div className="container ">
-      <div className="row justify-content-center mt-5   d-flex align-items-center justify-content-center vh-100">
+      <div className="row justify-content-center mt-5  d-flex align-items-center justify-content-center vh-100">
+        <h2 className='text-center'>Translator</h2>
         <div className="col-lg-6">
           <div className="form-group">
             <textarea
