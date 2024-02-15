@@ -1,109 +1,86 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from 'react';
 
-const Tourism = () => {
-  const [touristAttractions, setTouristAttractions] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [filteredAttractions, setFilteredAttractions] = useState([]);
-  const [sortType, setSortType] = useState("name");
+const Converter = () => {
+  const [amount, setAmount] = useState('');
+  const [fromCurrency, setFromCurrency] = useState('EUR');
+  const [toCurrency, setToCurrency] = useState('USD');
+  const [result, setResult] = useState('');
+  const [error, setError] = useState('');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const apiKey = "764e391db4bf49b1881adcbf7f364eda"; // DDM: Added Geoapify API key
-        const response = await fetch(
-          // Add Geoapify API key
-          `https://api.geoapify.com/v1/places?categories=Tourist%20Attractions&apiKey=${apiKey}`
-        );
-
-        if (!response.ok) {
-          throw new Error(
-            `Failed to fetch tourist attractions: ${response.statusText}`
-          );
+  const convertCurrency = async () => {
+    try {
+      const response = await fetch(`https://currency-converter18.p.rapidapi.com/api/v1/convert?from=${fromCurrency}&to=${toCurrency}&amount=${amount}`, {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': '422b48771dmshe6b4e4b3b1b3eeep1bfbbfjsnb332ab7dacff',
+          'X-RapidAPI-Host': 'currency-converter18.p.rapidapi.com'
         }
-
-        const data = await response.json();
-        setTouristAttractions(data.features);
-        setFilteredAttractions(data.features); // DDM: Set filtered attractions initially
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching tourist attractions:", error);
-        setLoading(false);
+      });
+      const data = await response.json();
+      if (data.error) {
+        setError(data.error);
+        setResult('');
+      } else {
+        setResult(data.result);
+        setError('');
       }
-    };
-
-    fetchData();
-  }, []);
-
-  // DDM: Function to handle sorting
-  const handleSort = (type) => {
-    setSortType(type);
-    const sortedAttractions = [...filteredAttractions].sort((a, b) => {
-      if (type === "name") {
-        return a.properties.name.localeCompare(b.properties.name);
-      } else if (type === "distance") {
-        return a.properties.distance - b.properties.distance;
-      } else if (type === "rating") {
-        return b.properties.rating - a.properties.rating;
-      }
-      return 0;
-    });
-    setFilteredAttractions(sortedAttractions);
+    } catch (error) {
+      console.error('Error fetching conversion data:', error);
+      setError('Error fetching conversion data. Please try again.');
+      setResult('');
+    }
   };
 
-  // DDM: Function to handle filtering
-  const handleFilter = (e) => {
-    const keyword = e.target.value.toLowerCase();
-    const filtered = touristAttractions.filter((attraction) =>
-      attraction.properties.name.toLowerCase().includes(keyword)
-    );
-    setFilteredAttractions(filtered);
+  const handleConvert = (e) => {
+    e.preventDefault();
+    convertCurrency();
   };
 
   return (
-    <div>
-      <h2>Tourist Attractions</h2>
-      {/* DDM: Added filtering and sorting controls */}
-      <div>
-        <label htmlFor="filter">Filter by name:</label>
-        <input type="text" id="filter" onChange={handleFilter} />
-      </div>
-      <div>
-        <label htmlFor="sort">Sort by:</label>
-        <select id="sort" onChange={(e) => handleSort(e.target.value)}>
-          <option value="name">Name</option>
-          <option value="distance">Distance</option>
-          <option value="rating">Rating</option>
-        </select>
-      </div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : filteredAttractions.length === 0 ? (
-        <p>No tourist attractions found.</p>
-      ) : (
-        <ul>
-          {filteredAttractions.map((attraction) => (
-            <li key={attraction.properties.id}>
-              <div>
-                <strong>{attraction.properties.name}</strong>
-              </div>
-              <div>{attraction.properties.formattedAddress}</div>
-              <div>
-                {attraction.properties.url && (
-                  <a
-                    href={attraction.properties.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Website
-                  </a>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
+    <div className="container mt-5">
+      <h1 className="text-center mb-4">Currency Converter</h1>
+      <form onSubmit={handleConvert}>
+        <div className="row justify-content-center">
+          <div className="col-sm-4">
+            <input type="number" className="form-control mb-3" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Enter amount" required />
+          </div>
+          <div className="col-sm-2">
+            <select className="form-select mb-3" value={fromCurrency} onChange={(e) => setFromCurrency(e.target.value)}>
+              <option value="USD">United States Dollar</option>
+              <option value="AOA">Angola Kwanza</option>
+              <option value="AUD">Australia Dollar</option>
+              <option value="NGN">Nigeria Naira</option>
+              <option value="EUR">Euro Member Countries</option>
+              <option value="GBP">United Kingdom Pound</option>
+            </select>
+          </div>
+          <div className="col-sm-2">
+            <select className="form-select mb-3" value={toCurrency} onChange={(e) => setToCurrency(e.target.value)}>
+              <option value="USD">United States Dollar</option>
+              <option value="AOA">Angola Kwanza</option>
+              <option value="AUD">Australia Dollar</option>
+              <option value="NGN">Nigeria Naira</option>
+              <option value="EUR">Euro Member Countries</option>
+              <option value="GBP">United Kingdom Pound</option>
+            </select>
+          </div>
+          <div className="col-sm-2">
+            <button type="submit" className="btn btn-primary mb-3">Convert</button>
+          </div>
+        </div>
+      </form>
+      {error && <p className="text-danger">{error}</p>}
+      {result && (
+        <div>
+          <p className="fw-bold">Result:</p>
+          <p>From: {result.from}</p>
+          <p>To: {result.to}</p>
+          <p>Amount to Convert: {result.amountToConvert}</p>
+          <p>Converted Amount: {result.convertedAmount}</p>
+        </div>
       )}
     </div>
   );
 };
 
-export default Tourism;
+export default Converter;
