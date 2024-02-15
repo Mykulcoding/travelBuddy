@@ -9,9 +9,10 @@ import Weather from "./pages/Weather/weather"; // Import Weather component
 import Footer from "./components/Footer/footer";
 import "./App";
 import HeroSection from './components/HeroSection/HeroSection';
-import Direction from './pages/Directions';
+import Direction from './pages/Maps/Directions';
 import Translator from "./pages/translate/translate";
 import Quiz from "./pages/Quiz/quiz";
+import Weatherforecast from "./pages/Weather/Weatherforecast";
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
             <Route path="/map" element={<Direction />} />
             <Route path="/tourism" element={<Tourism />} />
             <Route path="/translate" element={<Translator />} />
-            <Route path="/weather" element={<Weather />} />
+            <Route path="/weather" element={<Weatherforecast />} />
             <Route path="/quiz" element={<Quiz />} />
           </Routes>
         </div>

@@ -4,6 +4,7 @@ import { FaSearch } from "react-icons/fa";
 import "./Weather.css";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
+import "../../assets/clouds.jpg";
 
 const Weather = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -61,7 +62,7 @@ const Weather = () => {
     <Container>
       {/* Search input and button */}
       <Row>
-        <Col xs={6}>
+        <Col xs={6} className="d-flex justify-content-end">
           <input
             className="searchbox my-5"
             type="text"
@@ -70,7 +71,7 @@ const Weather = () => {
             placeholder="Enter city..."/>
           </Col>
  <Col xs={2}>
-          <Button className="mx-1 searchbtn" onClick={handleSearch}>
+          <Button className=" searchbtn" onClick={handleSearch}>
             <FaSearch />
           </Button>
         </Col>
@@ -83,7 +84,7 @@ const Weather = () => {
           <h2 className="d-flex align-items-end justify-content-center mx-3 ">
             Current Weather in {weatherData.city}:
           </h2>
-          <Col className="d-flex justify-content-center my-4 main-card-border align-items-center">
+          <Col className="d-flex justify-content-center my-4 main-card-border align-items-center col-lg-3 col-md-4 col-sm-12 mb-4" >
             <p className=" mx-auto main-card-content">City: <span className="bold-text">{weatherData.city}</span></p>
             <p className=" mx-auto main-card-content">Time: <span className="bold-text">{weatherData.time}</span></p>
             <p className=" mx-auto main-card-content">Temperature: <span className="bold-text">{weatherData.temperature}°C</span></p>
