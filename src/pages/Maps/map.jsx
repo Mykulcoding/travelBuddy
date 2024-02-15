@@ -124,10 +124,14 @@ const Map = () => {
 
           {/* Button to Request Directions */}
           <div class="direction-btn">
-            <button className='btn btn-primary' onClick={requestDirections}>Get Directions</button>
+            <button className='btn' onClick={requestDirections}>Get Directions</button>
           </div>
+          
            {/* Directions List */}
+           {directions && (
             <DirectionsList directions={directions} />
+           )}
+            
         </div>
         <div className="map-area">
           {/* Google Map */}

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import "./translate.css"
 
 const Translator = () => {
   const [fromText, setFromText] = useState('');
@@ -35,8 +36,9 @@ const Translator = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-center mt-5">
+    <div className="container ">
+      <div className="row justify-content-center mt-5  d-flex align-items-center justify-content-center vh-100" id='translator-row'>
+        <h2 className='text-center'id='title'>Translator</h2>
         <div className="col-lg-6">
           <div className="form-group">
             <textarea
@@ -46,7 +48,7 @@ const Translator = () => {
               onChange={(e) => setFromText(e.target.value)}
             ></textarea>
           </div>
-          <div className="form-group">
+          <div className="form-group my-3">
             <textarea
               className="form-control to-text"
               placeholder="Translation"
@@ -57,7 +59,7 @@ const Translator = () => {
           </div>
           <div className="form-group">
             <div className="row">
-              <div className="col">
+              <div className="col my-3">
                 <select
                   className="form-control lang-from"
                   value={langFrom}
@@ -70,11 +72,14 @@ const Translator = () => {
                 </select>
               </div>
               <div className="col-auto my-auto">
-                <button className="btn btn-primary exchange" onClick={translateText}>
+                <button
+                  className="btn btn-primary exchange"
+                  onClick={translateText}
+                >
                   Translate
                 </button>
               </div>
-              <div className="col">
+              <div className="col my-3">
                 <select
                   className="form-control lang-to"
                   value={langTo}

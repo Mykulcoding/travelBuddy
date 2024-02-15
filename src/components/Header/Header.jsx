@@ -48,51 +48,50 @@ const Header = () => {
           className={`justify-content-between ${expanded ? "show" : ""}`}
         >
           {/* Time and Date on the left */}
-          <Navbar.Text className="mr-auto ">
-            {`Current Time: ${currentTime} \u00A0 | \u00A0 Current Date: ${currentDate}`}
+          <Navbar.Text className="mr-auto">
+            {`Current Time: ${currentTime} \u00A0|\u00A0 Current Date: ${currentDate}`}
           </Navbar.Text>
 
-          {/* Icons on the right */}
-          <Nav>
-            <LinkContainer to="/home">
-              <Nav.Link>
-                <FaHome className="nav-icon" />
-              </Nav.Link>
-            </LinkContainer>
-
-            <LinkContainer to="/map">
-              <Nav.Link>
-                <FaMapMarkedAlt className="nav-icon" />
-              </Nav.Link>
-            </LinkContainer>
-
-            <LinkContainer to="/tourism">
-              <Nav.Link>
-                <FaLandmark className="nav-icon" />
-              </Nav.Link>
-            </LinkContainer>
-
-            <LinkContainer to="/weather">
-              <Nav.Link>
-                <FaCloudSun className="nav-icon" />
-              </Nav.Link>
-            </LinkContainer>
-
+        {/* Icons on the right */}
+        <Nav>
+          <LinkContainer to="/">
+            <Nav.Link>
+              <FaHome className="nav-icon" />
+            </Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/map">
+            <Nav.Link>
+              <FaMapMarkedAlt className="nav-icon" />
+            </Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/tourism">
+            <Nav.Link>
+              <FaLandmark  className="nav-icon"/>
+            </Nav.Link>
+          </LinkContainer>
             <LinkContainer to="/translate">
               <Nav.Link>
                 <FaLanguage className="nav-icon" />
               </Nav.Link>
             </LinkContainer>
-
             <LinkContainer to="/quiz">
               <Nav.Link>
                 <FaStar className="nav-icon" />
               </Nav.Link>
             </LinkContainer>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-    </header>
+        
+          <LinkContainer to="/weather">
+            <Nav.Link>
+              <FaCloudSun  className="nav-icon"
+              />
+            </Nav.Link>
+          </LinkContainer>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+    </header> 
+  
+
   );
 };
 

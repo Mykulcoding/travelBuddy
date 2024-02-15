@@ -2,16 +2,17 @@ import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
-import Home from "./pages/Home/home"; // Import Home component
+import Home from "./pages/Home/Home"; // Import Home component
 import Map from "./pages/Maps/map"; // Import Map component
 import Tourism from "./pages/Tourism/tourism"; // Import Tourism component
 import Weather from "./pages/Weather/weather"; // Import Weather component
 import Footer from "./components/Footer/footer";
 import "./App";
 import HeroSection from './components/HeroSection/HeroSection';
-import Direction from './pages/Directions';
+import Direction from './pages/Maps/Directions';
 import Translator from "./pages/translate/translate";
 import Quiz from "./pages/Quiz/quiz";
+import Weatherforecast from "./pages/Weather/Weatherforecast";
 
 
 function App() {
@@ -24,11 +25,11 @@ function App() {
         <div>
           {/* routes */}
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/map" element={<Direction />} />
             <Route path="/tourism" element={<Tourism />} />
             <Route path="/translate" element={<Translator />} />
-            <Route path="/weather" element={<Weather />} />
+            <Route path="/weather" element={<Weatherforecast />} />
             <Route path="/quiz" element={<Quiz />} />
           </Routes>
         </div>
