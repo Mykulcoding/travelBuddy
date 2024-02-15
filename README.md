@@ -23,7 +23,7 @@ link to my portfolio where you can navigate around.
 
 https://travelbuddy-routesweatherwonders.netlify.app/#/
 
-![Image](https://github.com/Mykulcoding/TrendTube/assets/webpageHomeImage.PNG)
+![Image](./src/assets/webpageHomeImage.PNG)
 
 
 ## Features
