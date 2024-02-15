@@ -54,7 +54,7 @@ const Header = () => {
 
         {/* Icons on the right */}
         <Nav>
-          <LinkContainer to="/home">
+          <LinkContainer to="/">
             <Nav.Link>
               <FaHome className="nav-icon" />
             </Nav.Link>

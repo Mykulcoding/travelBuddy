@@ -126,8 +126,12 @@ const Map = () => {
           <div class="direction-btn">
             <button className='btn' onClick={requestDirections}>Get Directions</button>
           </div>
+          
            {/* Directions List */}
+           {directions && (
             <DirectionsList directions={directions} />
+           )}
+            
         </div>
         <div className="map-area">
           {/* Google Map */}
