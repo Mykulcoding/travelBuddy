@@ -51,61 +51,42 @@ const Header = () => {
         <Nav>
           <LinkContainer to="/home">
             <Nav.Link>
-              <FaHome />
+              <FaHome className="nav-icon" />
             </Nav.Link>
           </LinkContainer>
-
           <LinkContainer to="/map">
             <Nav.Link>
-              <FaMapMarkedAlt />
+              <FaMapMarkedAlt className="nav-icon" />
             </Nav.Link>
           </LinkContainer>
-
           <LinkContainer to="/tourism">
             <Nav.Link>
-              <FaLandmark />
+              <FaLandmark  className="nav-icon"/>
             </Nav.Link>
           </LinkContainer>
-
-<<<<<<<< HEAD:src/components/Header/Header.jsx
             <LinkContainer to="/translate">
               <Nav.Link>
                 <FaLanguage className="nav-icon" />
               </Nav.Link>
             </LinkContainer>
-
             <LinkContainer to="/quiz">
               <Nav.Link>
                 <FaStar className="nav-icon" />
               </Nav.Link>
             </LinkContainer>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-    </header>
-========
+        
           <LinkContainer to="/weather">
             <Nav.Link>
-              <FaCloudSun />
-            </Nav.Link>
-          </LinkContainer>
-
-          <LinkContainer to="/translation">
-            <Nav.Link>
-              <FaLanguage />
-            </Nav.Link>
-          </LinkContainer>
-
-          <LinkContainer to="/review">
-            <Nav.Link>
-              <FaStar />
+              <FaCloudSun  className="nav-icon"
+              />
             </Nav.Link>
           </LinkContainer>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
     </header> 
->>>>>>>> fixing/issues:reactweb/src/components/Header/Header.jsx
+  
+
   );
 };
 
