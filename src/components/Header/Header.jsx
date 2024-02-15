@@ -29,23 +29,28 @@ const Header = () => {
   return (
     <header>
       <Navbar expand="lg">
-      <div className = "NavbarBrand" href="/">
-        <img
-          src={logo} 
-          width="250"
-          height="83"
-          className="d-inline-block align-top"
-           alt="Logo"
-        />
-      </div>
+        <div className="NavbarBrand" href="/">
+          <img
+            src={logo}
+            width="250"
+            height="83"
+            className="d-inline-block align-top"
+            alt="Logo"
+          />
+        </div>
 
-      <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={handleToggle} />
-      <Navbar.Collapse id="basic-navbar-nav" className={`justify-content-between ${expanded ? 'show' : ''}`}>
-        {/* Time and Date on the left */}
-        <Navbar.Text className="mr-auto">
-          <FaClock className="mr-1"/>
-          {`Current Time: ${currentTime} | Current Date: ${currentDate}`}
-        </Navbar.Text>
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          onClick={handleToggle}
+        />
+        <Navbar.Collapse
+          id="basic-navbar-nav"
+          className={`justify-content-between ${expanded ? "show" : ""}`}
+        >
+          {/* Time and Date on the left */}
+          <Navbar.Text className="mr-auto">
+            {`Current Time: ${currentTime} \u00A0|\u00A0 Current Date: ${currentDate}`}
+          </Navbar.Text>
 
         {/* Icons on the right */}
         <Nav>

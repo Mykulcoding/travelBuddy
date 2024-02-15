@@ -124,7 +124,7 @@ const Map = () => {
 
           {/* Button to Request Directions */}
           <div class="direction-btn">
-            <button className='btn ' onClick={requestDirections}>Get Directions</button>
+            <button className='btn' onClick={requestDirections}>Get Directions</button>
           </div>
            {/* Directions List */}
             <DirectionsList directions={directions} />
