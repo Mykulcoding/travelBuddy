@@ -12,9 +12,14 @@ textarea{
     height: 260px;
    
 }
-
-.row{
-    background-color: rgb(161, 216, 227); ;
+#translator-row {
+    background-color: rgb(161, 216, 227); 
 }
 
+#title {
+    font-size: 50px;
+    color: #ffff;
+    padding: 10px;
+
+}
 

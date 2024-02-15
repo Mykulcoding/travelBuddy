@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchTriviaQuestions } from '../../components/QuizComponent/trivaService.jsx';
+import './quiz.css';
 
 const Quiz = () => {
     // State to manage questions, categories, selected category, user answers, score, and display score
@@ -90,7 +91,7 @@ const Quiz = () => {
 
   // JSX rendering
   return (
-    <div>
+    <div className='quiz-wrap'>
       <h1>Trivia Quiz</h1>
 
       {/* Category selection dropdown */}
