@@ -4,7 +4,7 @@ import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/home"; // Import Home component
 import Map from "./pages/Maps/map"; // Import Map component
-import Tourism from "./pages/Currency/currency"; // Import Tourism component
+import Currency from "./pages/Currency/currency"; // Import Tourism component
 import Weather from "./pages/Weather/weather"; // Import Weather component
 import Footer from "./components/Footer/footer";
 import "./App";
