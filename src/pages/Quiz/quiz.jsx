@@ -91,11 +91,13 @@ const Quiz = () => {
 
   // JSX rendering
   return (
-    <div className='quiz-wrap'>
-      <h1>Trivia Quiz</h1>
+    <div className="quiz-wrap">
+      <h1 className="d-flex justify-content-center">
+        Trivia Quiz
+      </h1>
 
       {/* Category selection dropdown */}
-      <select onChange={handleCategoryChange} value={selectedCategory}>
+      <select className='select-options' onChange={handleCategoryChange} value={selectedCategory}>
         <option value="">Select Category</option>
         {categories.map((category) => (
           <option key={category.id} value={category.id}>
@@ -107,17 +109,23 @@ const Quiz = () => {
       {showScore ? (
         // Display user's score and play again button after submitting answers
         <div>
-          <h2>Your Score: {score} / {questions.length}</h2>
-          <button onClick={resetQuiz}>Play Again</button>
+          <h2 className='display-score'>
+            Your Score: <span className='bold'>{score} / {questions.length}</span>
+          </h2>
+          <button className='submit-btn play-again' onClick={resetQuiz}>Play Again</button>
         </div>
       ) : (
         // Display questions and answer options
-        <div>
+        <div className='options'>
           <ul>
             {questions.map((question) => (
               <li key={question.question}>
                 {/* Render question with decoded HTML entities */}
-                <p dangerouslySetInnerHTML={{ __html: decodeHTML(question.question) }} />
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: decodeHTML(question.question),
+                  }}
+                />
                 <ul>
                   {/* Render answer options with radio buttons */}
                   {question.incorrect_answers.map((answer) => (
@@ -127,7 +135,9 @@ const Quiz = () => {
                           type="radio"
                           name={`question_${question.question}`}
                           value={answer}
-                          onChange={() => handleAnswerSelect(question.question, answer)}
+                          onChange={() =>
+                            handleAnswerSelect(question.question, answer)
+                          }
                         />
                         {answer}
                       </label>
@@ -139,7 +149,12 @@ const Quiz = () => {
                         type="radio"
                         name={`question_${question.question}`}
                         value={question.correct_answer}
-                        onChange={() => handleAnswerSelect(question.question, question.correct_answer)}
+                        onChange={() =>
+                          handleAnswerSelect(
+                            question.question,
+                            question.correct_answer
+                          )
+                        }
                       />
                       {question.correct_answer}
                     </label>
@@ -150,7 +165,7 @@ const Quiz = () => {
           </ul>
 
           {/* Button to submit answers */}
-          <button onClick={calculateScore}>Submit Answers</button>
+          <button className='submit-btn' onClick={calculateScore}>Submit Answers</button>
         </div>
       )}
     </div>
