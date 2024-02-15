@@ -1,7 +1,8 @@
 .quiz-wrap {
     background-color: rgb(161, 216, 227);
     width: 100%;
-    height: 100vh;
+    max-height: 80vh;
+    overflow-y: auto; /* Add a scrollbar if the content exceeds the maximum height */
     background-image: url('../../assets/time.jpg');
     background-size: cover;
     background-position: center;
