@@ -61,73 +61,93 @@ const Weather = () => {
   return (
     <Container>
       {/* Search input and button */}
-      <Row>
-        <Col xs={6} className="d-flex justify-content-end">
+      <Row className="my-5">
+        <Col xs={12} md={6} lg={6} className="d-flex justify-content-end">
           <input
-            className="searchbox my-5"
+            className="searchbox"
             type="text"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-            placeholder="Enter city..."/>
-          </Col>
- <Col xs={2}>
-          <Button className=" searchbtn" onClick={handleSearch}>
+            placeholder="Enter city..."
+          />
+        </Col>
+        <Col xs={12} md={3} lg={2} className="d-flex align-items-center">
+          <Button className="searchbtn" onClick={handleSearch}>
             <FaSearch />
           </Button>
         </Col>
-        <Col xs={2}></Col>
+        <Col xs={12} md={3} lg={2}></Col>
       </Row>
-<></>
+
       {/* Display current weather */}
       {weatherData && (
-        <Row className="">
-          <h2 className="d-flex align-items-end justify-content-center mx-3 ">
-            Current Weather in {weatherData.city}:
-          </h2>
-          <Col className="d-flex justify-content-center my-4 main-card-border align-items-center col-lg-3 col-md-4 col-sm-12 mb-4" >
-            <p className=" mx-auto main-card-content">City: <span className="bold-text">{weatherData.city}</span></p>
-            <p className=" mx-auto main-card-content">Time: <span className="bold-text">{weatherData.time}</span></p>
-            <p className=" mx-auto main-card-content">Temperature: <span className="bold-text">{weatherData.temperature}°C</span></p>
-            <p className=" mx-auto main-card-content">Weather: <span className="bold-text">{weatherData.weatherText}</span></p>
-            <p className=" mx-auto main-card-content">Wind: <span className="bold-text">{weatherData.wind}</span></p>
-            <p className=" mx-auto main-card-content">Humidity: <span className="bold-text">{weatherData.humidity}</span></p>
+        <Row className="my-4">
+          <Col xs={12}>
+            <h2 className="d-flex align-items-end justify-content-center mx-3 ">
+              Current Weather in {weatherData.city}:
+            </h2>
+          </Col>
+          <Col xs={12} lg={3} md={6} className="d-flex justify-content-center my-4 align-items-center mb-4">
+            <Card className="mx-1 main-card-border">
+              <Card.Body className="card-border main-card-content red-border green-bg">
+                {/* Replaced <p> with <div> */}
+                <div className="mx-auto">
+                  City: <span className="bold-text">{weatherData.city}</span>
+                </div>
+                <div className="mx-auto">
+                  Time: <span className="bold-text">{weatherData.time}</span>
+                </div>
+                <div className="mx-auto">
+                  Temperature: <span className="bold-text">{weatherData.temperature}°C</span>
+                </div>
+                <div className="mx-auto">
+                  Weather: <span className="bold-text">{weatherData.weatherText}</span>
+                </div>
+                <div className="mx-auto">
+                  Wind: <span className="bold-text">{weatherData.wind}</span>
+                </div>
+                <div className="mx-auto">
+                  Humidity: <span className="bold-text">{weatherData.humidity}</span>
+                </div>
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
       )}
 
       {/* Display 5-day forecast */}
       {forecastData && (
-        <Row className="my-5">
-          <h2 className="d-flex justify-content-center  my-5">
-            5-Day Forecast:
-          </h2>
-          <Col className="d-flex align-items-end justify-content-center mx-3">
-            {forecastData.map((day) => (
-              <div key={day.date}>
-                <Card className="mx-1 " style={{ width: "20rem" }}>
-                  <Card.Body className="card-border">
-                    <Card.Title className=" d-flex justify-content-center 5-day-date">
-                      <h3>{day.date}</h3>
-                    </Card.Title>
-                    <Card.Text>
-                      <p className=" d-flex justify-content-center">
-                        Min Temperature: {day.minTemperature}°C
-                      </p>
-                      <p className=" d-flex justify-content-center">
-                        Max Temperature: {day.maxTemperature}°C
-                      </p>
-                      <p className=" d-flex justify-content-center">
-                        Day Weather: {day.dayWeatherText}
-                      </p>
-                      <p className=" d-flex justify-content-center">
-                        Night Weather: {day.nightWeatherText}
-                      </p>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </div>
-            ))}
+        <Row className="my-5 scroller">
+          <Col xs={12}>
+            <h2 className="d-flex justify-content-center my-5">
+              5-Day Forecast:
+            </h2>
           </Col>
+          {forecastData.map((day, index) => (
+            <Col key={index} xs={12} md={6} lg={4} className="mb-4">
+              <Card className="mx-1 weather-card">
+                <Card.Body className="card-border">
+                  <Card.Title className="d-flex justify-content-center 5-day-date">
+                    <h3>{day.date}</h3>
+                  </Card.Title>
+                  <Card.Text>
+                    <p className="d-flex justify-content-center">
+                      Min Temperature: {day.minTemperature}°C
+                    </p>
+                    <p className="d-flex justify-content-center">
+                      Max Temperature: {day.maxTemperature}°C
+                    </p>
+                    <p className="d-flex justify-content-center">
+                      Day Weather: {day.dayWeatherText}
+                    </p>
+                    <p className="d-flex justify-content-center">
+                      Night Weather: {day.nightWeatherText}
+                    </p>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
         </Row>
       )}
     </Container>
