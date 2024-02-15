@@ -10,6 +10,7 @@ TravelBuddy is a web application that serves as your ultimate companion for plan
 - [Installation](#installation)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
+- [API Used](#API-used)
 - [Collaborators](#collaborators)
 - [License](#license)
 - [Questions](#questions)
@@ -20,9 +21,9 @@ TravelBuddy is a web application that serves as your ultimate companion for plan
 
 link to my portfolio where you can navigate around.
 
-https://
+https://travelbuddy-routesweatherwonders.netlify.app/#/
 
-![Image](https://github.com/Mykulcoding/TrendTube/assets/)
+![Image](https://github.com/Mykulcoding/TrendTube/assets/webpageHomeImage.PNG)
 
 
 ## Features
@@ -82,6 +83,15 @@ Install dependencies:
 - Currency Conversion: ExchangeRate-API
 - Deployment: Netlify
 
+## API Used
+
+- Currency Converter API by Not Null on RapidAPI
+- AccuWeather API
+- Google Maps API
+- DeepL Translator API
+- Open Trivia DB
+
+
 
 ## Collaorators
 
@@ -106,5 +116,5 @@ This project is licensed under the MIT License.
 
 If you have any questions or need further assistance, please reach out:
 
-- [Github](https://github.com/Mykulcoding/Mykul-README-generator)
+- [Github](https://github.com/Mykulcoding)
 - [Email] (mom_adjei@yahoo.com)
