@@ -6,6 +6,8 @@
     background-position: center;
     position: relative;
     background-color: rgb(127, 187, 192);
+    overflow-y: auto; /*Added scroll bar for vertical overflow*/
+    max-height: calc(100vh - 100px); /*Adjusted maximum height as needed */
 }
 
 .card-border {
