@@ -6,43 +6,27 @@ import {
   DirectionsRenderer,
   Autocomplete,
 } from '@react-google-maps/api';
+import './Map.css'
+import '../../assets/maps.jpg'
 
 // Component to display directions list
 const DirectionsList = ({ directions }) => {
   return (
-    <div style={{ position: 'absolute', left: 10, top: 170, width: '250px' }}>
-      <div>
+    <div className="directions">
         <h2>Directions</h2>
-        <ol>
+        <ol className='list'>
           {directions &&
             directions.routes[0].legs[0].steps.map((step, index) => (
               <li key={index} dangerouslySetInnerHTML={{ __html: step.instructions }} />
             ))}
         </ol>
-      </div>
     </div>
   );
 };
 
 const Map = () => {
   const mapContainerStyle = {
-    width: '70%',
     height: '500px',
-    float: 'right',
-  };
-
-  const autocompleteStyle = {
-    position: 'absolute',
-    left: 10,
-    top: 80,
-    zIndex: 1,
-  };
-
-  const buttonStyle = {
-    position: 'absolute',
-    left: 10,
-    top: 130,
-    zIndex: 1,
   };
 
   const [origin, setOrigin] = useState(null);
@@ -106,51 +90,59 @@ const Map = () => {
       googleMapsApiKey="AIzaSyAf7DnPpFx3bngUYJa427O5MqVsmWQonmY"
       libraries={['places']}
     >
-      {/* Autocomplete for Origin */}
-      <div style={{ ...autocompleteStyle, top: 50 }}>
-        <Autocomplete
-          onLoad={onLoadOriginAutocomplete}
-          onPlaceChanged={handleOriginSelect}
-        >
-          <input
-            type="text"
-            placeholder="Enter your current location..."
-            style={{ width: '240px', padding: '8px' }}
-          />
-        </Autocomplete>
+      <div className="map-container">
+        <div className="form">
+          {/* Autocomplete for Origin */}
+        
+            <Autocomplete
+              className="input-container"
+              onLoad={onLoadOriginAutocomplete}
+              onPlaceChanged={handleOriginSelect}
+            >
+              <input
+                type="text"
+                placeholder="Enter your current location..."
+                className="input-field"
+              />
+            </Autocomplete>
+         
+
+          {/* Autocomplete for Destination */}
+          
+            <Autocomplete
+              className="input-container"
+              onLoad={onLoadDestinationAutocomplete}
+              onPlaceChanged={handleDestinationSelect}
+            >
+              <input
+                type="text"
+                placeholder="Enter your destination..."
+                className="input-field"
+              />
+            </Autocomplete>
+          
+
+          {/* Button to Request Directions */}
+          <div class="direction-btn">
+            <button className='btn btn-primary' onClick={requestDirections}>Get Directions</button>
+          </div>
+           {/* Directions List */}
+            <DirectionsList directions={directions} />
+        </div>
+        <div className="map-area">
+          {/* Google Map */}
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            className="map"
+            center={{ lat: 37.7749, lng: -122.4194 }}
+            zoom={7}
+          >
+            {/* Directions Renderer */}
+            {directions && <DirectionsRenderer directions={directions} />}
+          </GoogleMap>
+        </div>
       </div>
-
-      {/* Autocomplete for Destination */}
-      <div style={{ ...autocompleteStyle, top: 100 }}>
-        <Autocomplete
-          onLoad={onLoadDestinationAutocomplete}
-          onPlaceChanged={handleDestinationSelect}
-        >
-          <input
-            type="text"
-            placeholder="Enter your destination..."
-            style={{ width: '240px', padding: '8px' }}
-          />
-        </Autocomplete>
-      </div>
-
-      {/* Button to Request Directions */}
-      <div style={buttonStyle}>
-        <button onClick={requestDirections}>Get Directions</button>
-      </div>
-
-      {/* Google Map */}
-      <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        center={{ lat: 37.7749, lng: -122.4194 }}
-        zoom={7}
-      >
-        {/* Directions Renderer */}
-        {directions && <DirectionsRenderer directions={directions} />}
-      </GoogleMap>
-
-      {/* Directions List */}
-      <DirectionsList directions={directions} />
+    
     </LoadScript>
   );
 };
