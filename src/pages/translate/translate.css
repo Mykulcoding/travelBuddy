@@ -16,11 +16,12 @@ textarea {
 #translator-row {
     background-image: url(../../assets/translationPageBackgoundImage.PNG);
     background-size: cover;
-    /* This will make the image cover the entire container */
     background-position: center;
-    /* This will center the image */
-    height: 100vh;
-    /* height set to the full viewport height */
+    min-height: 100vh; /* Set a minimum height to ensure content is visible */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
 #title {
@@ -35,3 +36,23 @@ textarea {
 .title-container {
     text-align: center;
   }
+
+
+.form-group {
+    margin-bottom: 15px; /* Add margin between form groups */
+}
+
+.from-text,
+.to-text {
+    height: 120px; /* Adjust the height of textareas for better visibility on smaller screens */
+}
+
+.lang-from,
+.lang-to {
+    width: 100%; /* Make the language selection dropdowns take full width on smaller screens */
+}
+
+.exchange {
+    width: 100%; /* Make the "Translate" button take full width on smaller screens */
+    margin-top: 10px; /* Add margin to the top of the button */
+}
