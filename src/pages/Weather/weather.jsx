@@ -14,7 +14,7 @@ const Weather = () => {
   const handleSearch = async () => {
     try {
       // Add AccuWeather API key
-      const apiKey = "jupzrltU6u2x4erPATbWLgnXj8eKDe6T"; // DDM: Changed to AccuWeather API key
+      const apiKey = "frFkwA1tTGrCJsK5JeH2hstr8dFdvhg8"; // DDM: Changed to AccuWeather API key
       const apiUrl = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${searchInput}`;
 
       // Make the API call to get location key
