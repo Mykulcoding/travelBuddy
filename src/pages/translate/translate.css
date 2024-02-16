@@ -13,7 +13,10 @@ textarea{
    
 }
 #translator-row {
-    background-color: rgb(161, 216, 227); 
+    background-image: url(../../assets/translationPageBackgoundImage.PNG);
+    background-size: cover; /* This will make the image cover the entire container */
+    background-position: center; /* This will center the image */
+    height: 100vh; /* Set the height to the full viewport height */
 }
 
 #title {
