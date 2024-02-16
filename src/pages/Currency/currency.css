@@ -1,0 +1,27 @@
+.currency-converter-container{
+    background-image: url('../../assets/currencyPageBackroundImage2.PNG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0px;
+    margin-top: 20px;
+}
+
+.currency-converter-container h1.text-center.mb-4 {
+    color: rgb(223, 218, 218); /* Set the text color to black */
+    text-shadow: 2px 2px 4px rgba(19, 18, 18, 0.5); /* Add a subtle text shadow for effect */
+    font-size: 2em; /* Adjust the font size based on your preference */
+
+   
+  }
+
+  .result-container{
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+    width: auto;
+    display: inline-block; /* Ensures the container only takes the necessary width */
+    padding-left: 20px;
+  }
+ 

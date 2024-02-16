@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "./currency.css";
+
 
 const Converter = () => {
   const [amount, setAmount] = useState("");
@@ -41,7 +43,7 @@ const Converter = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="currency-converter-container mt-5">
       <h1 className="text-center mb-4">Currency Converter</h1>
       <form onSubmit={handleConvert}>
         <div className="row justify-content-center">
@@ -92,13 +94,13 @@ const Converter = () => {
       </form>
       {error && <p className="text-danger">{error}</p>}
       {result && (
-        <div>
-          <p className="fw-bold">Result:</p>
-          <p>From: {result.from}</p>
-          <p>To: {result.to}</p>
-          <p>Amount to Convert: {result.amountToConvert}</p>
-          <p>Converted Amount: {Number(result.convertedAmount).toFixed(2)}</p>
-        </div>
+        <div className="result-container">
+        <p className="fw-bold">Result:</p>
+        <p>From: {result.from}</p>
+        <p>To: {result.to}</p>
+        <p>Amount to Convert: {result.amountToConvert}</p>
+        <p>Converted Amount: {Number(result.convertedAmount).toFixed(2)}</p>
+      </div>
       )}
     </div>
   );
