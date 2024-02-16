@@ -42,6 +42,7 @@ const Header = () => {
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           onClick={handleToggle}
+          className="ml-auto" // Align the toggle button to the right
         />
         <Navbar.Collapse
           id="basic-navbar-nav"
@@ -53,35 +54,36 @@ const Header = () => {
           </Navbar.Text>
 
         {/* Icons on the right */}
-        <Nav>
+        
+        <Nav className="ml-auto flex-row"> {/* Added ml-auto and flex-row classes */}
           <LinkContainer to="/">
-            <Nav.Link>
+            <Nav.Link className="nav-link-icon">
               <FaHome className="nav-icon" />
-            </Nav.Link>
+            </Nav.Link >
           </LinkContainer>
           <LinkContainer to="/map">
-            <Nav.Link>
+            <Nav.Link className="nav-link-icon">
               <FaMapMarkedAlt className="nav-icon" />
             </Nav.Link>
           </LinkContainer>
           <LinkContainer to="/currency">
-            <Nav.Link>
+            <Nav.Link className="nav-link-icon">
               <FaMoneyBillAlt  className="nav-icon"/>
-            </Nav.Link>
+            </Nav.Link >
           </LinkContainer>
             <LinkContainer to="/translate">
-              <Nav.Link>
+              <Nav.Link className="nav-link-icon">
                 <FaLanguage className="nav-icon" />
               </Nav.Link>
             </LinkContainer>
             <LinkContainer to="/quiz">
-              <Nav.Link>
+              <Nav.Link className="nav-link-icon">
                 <FaStar className="nav-icon" />
               </Nav.Link>
             </LinkContainer>
         
           <LinkContainer to="/weather">
-            <Nav.Link>
+            <Nav.Link className="nav-link-icon">
               <FaCloudSun  className="nav-icon"
               />
             </Nav.Link>
